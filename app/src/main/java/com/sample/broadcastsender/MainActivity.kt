@@ -28,6 +28,6 @@ class MainActivity : AppCompatActivity() {
         // OrderedReceiver1 was registered dynamically
         intent.setPackage("com.sample.broadcastreceiver")
         intent.putExtra("ebr", message)
-        sendBroadcast(intent)
+        sendOrderedBroadcast(intent, null)
     }
 }
