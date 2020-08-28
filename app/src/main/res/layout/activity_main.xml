@@ -8,18 +8,25 @@
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".MainActivity">
+    <EditText
+        android:id="@+id/edit_text_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Sent Message"
+        android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/text_view"
-        android:layout_width="wrap_content"
+        android:id="@+id/text_view_message"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Message"
-        android:textSize="20sp"/>
-
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:height="40dp"
+        android:hint="Received Message"
+        android:textSize="20sp" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="sendBroadCast"
-        android:text="Send Broadcast"
-        />
+        android:onClick="sendBroadcast"
+        android:text="Send Broadcast" />
 </LinearLayout>
