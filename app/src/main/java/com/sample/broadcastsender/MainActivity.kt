@@ -24,13 +24,10 @@ class MainActivity : AppCompatActivity() {
         val message = editTextMessage.text.toString()
         val intent = Intent("com.sample.EXAMPLE_ACTION")
 
-        // It checks which Apps of the phone have a broadcast receiver that matches the intent filter we defined in the intent
-        val infos = packageManager.queryBroadcastReceivers(intent, 0)
-        for (info in infos) {
-            val cn = ComponentName(info.activityInfo.packageName, info.activityInfo.name)
-            intent.component = cn
-            intent.putExtra("ebr", message)
-            sendBroadcast(intent)
-        }
+        // Required for calling the broadcast receivers registered statically: OrderedReceiver2 and OrderedReceiver3
+        // OrderedReceiver1 was registered dynamically
+        intent.setPackage("com.sample.broadcastreceiver")
+        intent.putExtra("ebr", message)
+        sendBroadcast(intent)
     }
 }
