@@ -22,9 +22,8 @@ class MainActivity : AppCompatActivity() {
 
     fun sendBroadcast(v: View) {
         val message = editTextMessage.text.toString()
-        val intent = Intent()
-        // Calling  explicitly the broadcast receiver of another App
-        intent.setClassName("com.sample.broadcastreceiver", "com.sample.broadcastreceiver.ExampleBroadcastReceiver")
+        val intent = Intent("com.sample.EXAMPLE_ACTION")
+        intent.setPackage("com.sample.broadcastreceiver")
         intent.putExtra("ebr", message)
         sendBroadcast(intent)
     }
