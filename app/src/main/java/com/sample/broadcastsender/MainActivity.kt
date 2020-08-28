@@ -22,7 +22,9 @@ class MainActivity : AppCompatActivity() {
 
     fun sendBroadcast(v: View) {
         val message = editTextMessage.text.toString()
-        val intent = Intent(this, ExampleBroadcastReceiver2::class.java)
+        val intent = Intent()
+        val cn = ComponentName(this, ExampleBroadcastReceiver2::class.java)
+        intent.component = cn
         intent.putExtra("ebr", message)
         sendBroadcast(intent)
     }
