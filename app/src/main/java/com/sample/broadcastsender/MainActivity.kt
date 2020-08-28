@@ -23,8 +23,14 @@ class MainActivity : AppCompatActivity() {
     fun sendBroadcast(v: View) {
         val message = editTextMessage.text.toString()
         val intent = Intent("com.sample.EXAMPLE_ACTION")
-        intent.setPackage("com.sample.broadcastreceiver")
-        intent.putExtra("ebr", message)
-        sendBroadcast(intent)
+
+        // It checks which Apps of the phone have a broadcast receiver that matches the intent filter we defined in the intent
+        val infos = packageManager.queryBroadcastReceivers(intent, 0)
+        for (info in infos) {
+            val cn = ComponentName(info.activityInfo.packageName, info.activityInfo.name)
+            intent.component = cn
+            intent.putExtra("ebr", message)
+            sendBroadcast(intent)
+        }
     }
 }
