@@ -27,7 +27,16 @@ class MainActivity : AppCompatActivity() {
         // Required for calling the broadcast receivers registered statically: OrderedReceiver2 and OrderedReceiver3
         // OrderedReceiver1 was registered dynamically
         intent.setPackage("com.sample.broadcastreceiver")
-        intent.putExtra("ebr", message)
-        sendOrderedBroadcast(intent, null)
+//        intent.putExtra("ebr", message)
+
+        val extras = Bundle()
+        extras.putString("stringExtra", "start")
+
+        /**
+         * resultReceiver: the last broadcast receiver that will be executed
+         * scheduler: param where we should provide the alternative thread where we want to trigger our broadcast receiver
+         * the following 3 pieces of data will be sent to the next broadcast receiver and will be read, changed and sent to the next one
+         */
+        sendOrderedBroadcast(intent, null, SenderReceiver(), null, 0, "Start", extras)
     }
 }
